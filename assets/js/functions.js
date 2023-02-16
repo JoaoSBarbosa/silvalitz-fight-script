@@ -30,7 +30,7 @@ const createSorcerer = (name) => {
 const createLittleMonster = (name) => {
   return {
     ...defaultCharacter,
-    name: "Estaladores",
+    name: "Estalador",
     life: 40,
     maxLife: 40,
     attack: 4,
@@ -89,10 +89,10 @@ const stage = {
   },
   doAttack(attacking, attacked) {
    if(attacking.life <= 0){
-      console.log(`${attacking.name} está morto, não pode atacar !`)
+      log.addMessage(`${attacking.name} está morto, não pode atacar !`)
       return;
    }else if(attacked.life <=0){
-      console.log(`${attacked.name} já está morto !`)
+      log.addMessage(`${attacked.name} já está morto !`)
       return;
    }
    const attackFactor = (Math.random() * 2).toFixed(2);
@@ -104,12 +104,31 @@ const stage = {
    if(actualAtack > actualdefense){
       attacked.life -= actualAtack;
       attacked.life = attacked.life < 0 ? 0 : attacked.life;
-      console.log(`${attacking.name} causou ${actualAtack.toFixed(2)} de dano em ${attacked.name}!`)
+      log.addMessage(`${attacking.name} causou ${actualAtack.toFixed(2)} de dano em ${attacked.name}!`)
 
    }else{
-      console.log(`${attacked.name} conseguiu defender!`)
+      log.addMessage(`${attacked.name} conseguiu defender!`)
    }
 
    this.update();
   },
 };
+
+const log = {
+   //Lista de logs
+   list:[],
+   // Função para adicionar eventos na lista
+   addMessage(msg){
+      this.list.push(msg);
+      this.render();
+   },
+   //Função para exibir a lista no HTML
+   render(){
+      const logEl = document.querySelector('.log');
+      logEl.innerHTML = '';
+
+      for(let i in this.list){
+         logEl.innerHTML += `<li>${this.list[i]}</li>`;
+      }
+   }
+}

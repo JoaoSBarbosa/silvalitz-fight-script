@@ -1,5 +1,5 @@
 const char = createKnight('João');
-const monster = createBigMonster();
+const monster = createLittleMonster();
 
 stage.start(
    char,
