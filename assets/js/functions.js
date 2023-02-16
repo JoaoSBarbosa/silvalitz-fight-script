@@ -41,9 +41,9 @@ const createBigMonster =(name) =>{
    return {
       ...defaultCharacter,
       name:'Necrofigo',
-      life:,
-      maxLife:,
-      attack:,
-      defense:
+      life: 120,
+      maxLife: 120,
+      attack: 16,
+      defense: 6
    }
 }
