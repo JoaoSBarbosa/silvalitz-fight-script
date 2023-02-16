@@ -1,0 +1,21 @@
+# Projeto - Jogo de Luta (V2)🤼‍♂️🕹️
+
+#### Um projeto de jogo de luta livre feito em linguagem JavaScript. 
+
+- Este projeto faz parte do curso JS no site B7WEB.
+
+- Estas são as pesquisas e treinamentos para o bom uso de factory  Javascript
+
+Estudos alcançados:
+
+- HTML/CSS
+  - display-flex
+  - display-grid
+  - overflow
+  - responsividade
+- JavaScript
+  - Functions
+  - Arrow function
+  - Eventos
+  - Factory
+
