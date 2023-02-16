@@ -30,7 +30,7 @@ const createSorcerer = (name) => {
 const createLittleMonster = (name) => {
   return {
     ...defaultCharacter,
-    name: "Estalador",
+    name: "Estaladores",
     life: 40,
     maxLife: 40,
     attack: 4,
@@ -40,7 +40,7 @@ const createLittleMonster = (name) => {
 const createBigMonster = (name) => {
   return {
     ...defaultCharacter,
-    name: "Necrofigo",
+    name: "Trôpegos",
     life: 120,
     maxLife: 120,
     attack: 16,
@@ -54,7 +54,7 @@ const stage = {
   fighter1El: null,
   fighter2El: null,
 
-  star(fighter1, fighter2, fighter1El, fighter2El) {
+  start(fighter1, fighter2, fighter1El, fighter2El) {
     this.fighter1 = fighter1;
     this.fighter2 = fighter2;
     this.fighter1El = fighter1El;
@@ -70,6 +70,24 @@ const stage = {
       .addEventListener("click", () =>
         this.doAttack(this.fighter2, this.fighter1)
       );
+    this.update();
   },
-  doAttack(attacking, attacked) {},
+  update() {
+    // fighter1
+    this.fighter1El
+      .querySelector(".name")
+      .innerHTML = `${this.fighter1.name} - ${this.fighter1.life.toFixed(1)} HP`;
+      let f1Pct = (this.fighter1.life / this.fighter1.maxLife) * 100;
+      this.fighter1El.querySelector('.bar').style.width = `${f1Pct}%`;
+    //fighter2
+    this.fighter2El
+      .querySelector(".name")
+      .innerHTML =`${this.fighter2.name} - ${this.fighter2.life.toFixed(1)} HP`;
+
+      let f2Pct = (this.fighter2.life / this.fighter2.maxLife) * 100;
+      this.fighter2El.querySelector('.bar').style.width = `${f2Pct}%`;
+  },
+  doAttack(attacking, attacked) {
+   console.log(`${attacking.name} atacando ${attacked.name}`)
+  },
 };
