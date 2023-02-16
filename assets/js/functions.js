@@ -88,6 +88,28 @@ const stage = {
       this.fighter2El.querySelector('.bar').style.width = `${f2Pct}%`;
   },
   doAttack(attacking, attacked) {
-   console.log(`${attacking.name} atacando ${attacked.name}`)
+   if(attacking.life <= 0){
+      console.log(`${attacking.name} está morto, não pode atacar !`)
+      return;
+   }else if(attacked.life <=0){
+      console.log(`${attacked.name} já está morto !`)
+      return;
+   }
+   const attackFactor = (Math.random() * 2).toFixed(2);
+   const defenseFactor = (Math.random() * 2).toFixed(2);
+
+   const actualAtack = attacking.attack * attackFactor;
+   const actualdefense = attacking.defense * defenseFactor;
+
+   if(actualAtack > actualdefense){
+      attacked.life -= actualAtack;
+      attacked.life = attacked.life < 0 ? 0 : attacked.life;
+      console.log(`${attacking.name} causou ${actualAtack.toFixed(2)} de dano em ${attacked.name}!`)
+
+   }else{
+      console.log(`${attacked.name} conseguiu defender!`)
+   }
+
+   this.update();
   },
 };
